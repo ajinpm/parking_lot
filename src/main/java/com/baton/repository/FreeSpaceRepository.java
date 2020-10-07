@@ -8,5 +8,5 @@ import com.baton.model.FreeSpace;
 
 @Repository
 @Transactional
-public interface FreeSpaceRepository extends CrudRepository<FreeSpace, Integer> {
+public interface FreeSpaceRepository extends CrudRepository<FreeSpace,Integer> {
 }

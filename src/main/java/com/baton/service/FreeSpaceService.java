@@ -26,7 +26,7 @@ public class FreeSpaceService {
 
 	public int addNoOfVan(int level) {
 		freespace = freespaceRepository.findById(level).get();
-		freespace.setNoOfVan();
+		freespace.setNoOfVans();
 		return freespace.getId();
 
 	}
