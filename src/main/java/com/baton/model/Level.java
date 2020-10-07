@@ -18,6 +18,9 @@ public class Level {
 
 	@Column(name = "motorcycle")
 	private int noOfBike;
+	
+	@Column(name="Bus")
+	private int noOfBus;
 
 	private int noOfLevels = 0;
 
@@ -35,6 +38,23 @@ public class Level {
 
 	public void setNoOfCars(int noOfCars) {
 		this.noOfCars = noOfCars;
+	}
+	
+	
+	public Level(int levelId, int noOfCars, int noOfVan, int noOfBike, int noOfBus) {
+		super();
+		LevelId = levelId;
+		this.noOfCars = noOfCars;
+		this.noOfVan = noOfVan;
+		this.noOfBike = noOfBike;
+		this.noOfBus = noOfBus;
+	}
+
+	public int getNoOfBus() {
+		return noOfBus;
+	}
+	public void setNoOfBus(int noOfBus) {
+		this.noOfBus = noOfBus;
 	}
 
 	public int getNoOfVan() {

@@ -17,6 +17,7 @@ public class LevelService {
 	FreeSpace freeSpace;
 
 	public int parkLevel(String vehicleType) {
+	
 		int levels = level.numberOfLevels();
 		for(int count=1;count<=levels;count++) {
 			checkLevel=levelRepo.findById(count).get();
@@ -25,29 +26,39 @@ public class LevelService {
 				if(count>2)
 					System.out.println("Parking full");
 				else {
-					if(checkLevel)
+					int a=freeSpace.getNoOfBuses();
+					int b=checkLevel.getNoOfBus();
+					if(a<b) {
+						//increase number of bus
+						//return level id
+						freeSpace.setNoOfBuses();
+						return count;
+					}
+					}
 				}
-					
-				}
-					
-				}
-			     //increase no of bus
 			else if(vehicleType=="car") {
-				if(checkLevel.getNoOfCars()) {//limit
+				if(freeSpace.getNoOfcars()<checkLevel.getNoOfCars()) {
 					//increase the number of car and return levelid
+					freeSpace.setNoOfcars();
+					return count;
 				}
+			}
 			else if(vehicleType=="bike") {
-				if(checkLevel.getNoOfCars()) {//limit
+				if(freeSpace.getNoOfBikes()<checkLevel.getNoOfBike()) {
 					//increase the number of bike and return levelid
+					freeSpace.setNoOfBikes();
+					return count;
 				}
+			}
 			else if(vehicleType=="van") {
-					if(checkLevel.getNoOfCars()) {//limit
+					if(freeSpace.getNoOfBuses()<checkLevel.getNoOfVan()) {
 						//increase the number of car and return levelid
+						freeSpace.setNoOfVans();
+						return count;
 				}
 			}
 			}
-		
-		return 0;
+		return levels;
 	}
 
 	public void parkVehicle(String typeOfVehicle) {
@@ -56,7 +67,11 @@ public class LevelService {
 
 	public int addLevel() {
 		level.addLevel();
-		return level.numberOfLevels();
+		int noOfLevels=level.numberOfLevels();
+		checkLevel=levelRepo.findById(noOfLevels).get();
+		if(noOfLevels<3) {
+		   //assign values
+	    }
 	}
 
 }
